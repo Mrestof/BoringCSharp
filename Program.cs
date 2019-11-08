@@ -1,4 +1,5 @@
-﻿using System;
+// Yes, it is pointless huge
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
