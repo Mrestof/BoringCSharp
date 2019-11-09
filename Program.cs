@@ -14,7 +14,7 @@ namespace MRSTF
         }
     }
 
-    class Useful 
+    class Useful
     {
         public static void SetColors(string theme = "magenta")
         {
@@ -22,13 +22,18 @@ namespace MRSTF
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.BackgroundColor = ConsoleColor.White;
+                Console.Clear();
             }
             else if (theme == "hacker")
             {
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.BackgroundColor = ConsoleColor.Black;
+                Console.Clear();
             }
-            Console.Clear();
+            else
+            {
+                Console.WriteLine("Selected wrong theme!");
+            }
         }
 
         public static string IntArrayToString(int[] array)
@@ -53,7 +58,7 @@ namespace MRSTF
             return output;
         }
 
-        public static string AskInput(string prompt = "Enter text: ", string type = "text") 
+        public static string AskInput(string prompt = "Enter text: ", string type = "text")
         {
             if (type == "text")
             {
@@ -107,7 +112,7 @@ namespace MRSTF
         }
     }
 
-    class Trash 
+    class Trash
     {
         public static int[] SortByFirstNum(int[] arr)
         {
@@ -133,7 +138,7 @@ namespace MRSTF
             return arr;
         }
 
-        public static int[] SortByLastNum(int[] arr) 
+        public static int[] SortByLastNum(int[] arr)
         {
             int pos_min, temp, l, r;
 
@@ -157,7 +162,7 @@ namespace MRSTF
             return arr;
         }
 
-        public static void RandomArrayGenerator() 
+        public static void RandomArrayGenerator()
         {
             List<int> list = new List<int>();
             int len = Convert.ToInt32(Useful.AskInput("Enter length of random array: "));
@@ -176,7 +181,7 @@ namespace MRSTF
             Console.Write("Random array: " + Useful.IntArrayToString(arr));
         }
 
-        public static void MiddleReverse() 
+        public static void MiddleReverse()
         {
             int temp, r;
             int[] arr = { 43, 76, 12, 65, 4, 7, 5, 3 };
@@ -205,7 +210,7 @@ namespace MRSTF
             foreach (var i in arr) Console.Write("{0} ", i);
         }
 
-        public static int[] ReverseIntArray(int[] arr) 
+        public static int[] ReverseIntArray(int[] arr)
         {
             int temp;
             for (int i = 0; i < arr.Length / 2; i++)
@@ -218,7 +223,7 @@ namespace MRSTF
             return arr;
         }
 
-        public static void QuadroString() 
+        public static void QuadroString()
         {
             Console.Write("Enter ur name: ");
             string name = Console.ReadLine();
@@ -243,7 +248,7 @@ namespace MRSTF
             }
         }
 
-        public static void RunningSharp(int len, int distance, int speed, int x = 0, bool turn = false) 
+        public static void RunningSharp(int len, int distance, int speed, int x = 0, bool turn = false)
         {
             while (true)
             {
@@ -268,7 +273,7 @@ namespace MRSTF
             }
         }
 
-        public static void NameStackOverflow() 
+        public static void NameStackOverflow()
         {
             Console.Write("Enter ur name: ");
             string name = Console.ReadLine();
@@ -424,16 +429,16 @@ namespace MRSTF
         }
     }
 
-    class Sort 
+    class Sort
     {
-        public static int[] SelectionSort(int[] arr) 
+        public static int[] SelectionSort(int[] arr)
         {
             int pos_min, temp;
 
             for (int i = 0; i < arr.Length - 1; i++)
             {
                 pos_min = i;
-                
+
                 for (int j = i + 1; j < arr.Length; j++)
                 {
                     if (arr[j] < arr[pos_min]) pos_min = j;
@@ -468,7 +473,7 @@ namespace MRSTF
         }
     }
 
-    class Games 
+    class Games
     {
         public static void GuessTheWordGAME()
         {
@@ -513,9 +518,9 @@ namespace MRSTF
             Console.Write("Congrtulations!\nYou solve it!\n\nPress (ESC) to exit.");
         }
 
-        public static void BullsNCows() 
+        public static void BullsNCows()
         {
-            
+
         }
     }
 }
