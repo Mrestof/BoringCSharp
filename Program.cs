@@ -10,7 +10,7 @@ namespace MRSTF
         public static void Main(string[] args)
         {
             Useful.SetColors("hacker");
-            Console.ReadKey();
+            // Your code here...
         }
     }
 
@@ -103,6 +103,8 @@ namespace MRSTF
             {
                 string arr = "";
                 Console.Write(prompt);
+
+                return arr;
             }
 
             else
@@ -114,6 +116,13 @@ namespace MRSTF
 
     class Trash
     {
+        public static void SwapTwoNums(ref int a, ref int b) 
+        {
+            int c = a;
+            a = b;
+            b = c;
+        }
+
         public static int[] SortByFirstNum(int[] arr)
         {
             int pos_min, temp, l, r;
@@ -162,10 +171,9 @@ namespace MRSTF
             return arr;
         }
 
-        public static void RandomArrayGenerator()
+        public static int[] RandomIntArrayGeneratorNoRepeat(int len)
         {
             List<int> list = new List<int>();
-            int len = Convert.ToInt32(Useful.AskInput("Enter length of random array: "));
             for (int i = 0; i < len; i++) list.Add(i);
 
             int[] arr = new int[len];
@@ -179,6 +187,22 @@ namespace MRSTF
             }
 
             Console.Write("Random array: " + Useful.IntArrayToString(arr));
+
+            return arr;
+        }
+
+        public static int[] RandomIntArrayGenerator(int len = 10, int maxNum = 50, int minNum = 0)
+        {
+            int[] arr = new int[len];
+            Random rand = new Random();
+
+            for (int i = 0; i < len; i++)
+            {
+                int randint = rand.Next(minNum, maxNum);
+                arr[i] = randint;
+            }
+
+            return arr;
         }
 
         public static void MiddleReverse()
@@ -431,6 +455,15 @@ namespace MRSTF
 
     class Sort
     {
+        public static void SelectionSortReference(int[] arr) 
+        {
+            int N=arr.Length;
+            for (int i = 0; i < N - 1; i++)
+                for (int j = i + 1; j < N; j++)
+                    if (arr[i] > arr[j])
+                        Trash.SwapTwoNums(ref arr[i], ref arr[j]);
+        }
+
         public static int[] SelectionSort(int[] arr)
         {
             int pos_min, temp;
