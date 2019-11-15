@@ -1,3 +1,4 @@
+// GitHub - https://github.com/Mrestof
 // Yes, it is pointless huge
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,21 @@ namespace MRSTF
     {
         public static void Main(string[] args)
         {
-            Useful.SetColors("hacker");
-            // Your code here...
+            int lines = 3, columns = 3;
+
+            int[,] matrix = new int[,]
+            {
+                {1,2,3},
+                {1,2,3},
+                {2,6,1}
+            };
+
+            for (int line = 0; line < lines; line++)
+            {
+                // UNDONE!!!
+            }
+
+            Console.ReadKey();
         }
     }
 
@@ -101,8 +115,20 @@ namespace MRSTF
             }
             else if (type == "array")
             {
+                // UNDONE
+                char key;
                 string arr = "";
                 Console.Write(prompt);
+
+                while (true)
+                {
+                    key = Console.ReadKey().KeyChar;
+
+                    if (true)
+                    {
+                        break;
+                    }
+                }
 
                 return arr;
             }
@@ -116,6 +142,25 @@ namespace MRSTF
 
     class Trash
     {
+        public static void DrawDiagonals() 
+        {
+            int[,] matrix = new int[7, 7];
+
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    if (i == j && i + j == 6) Console.BackgroundColor = ConsoleColor.Magenta;
+                    else if (i + j == 6) Console.BackgroundColor = ConsoleColor.DarkRed;
+                    else if (i != j) Console.BackgroundColor = ConsoleColor.White;
+                    else if (i == j) Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    Console.Write("  ");
+                }
+
+                Console.Write('\n');
+            }
+        }
+
         public static void SwapTwoNums(ref int a, ref int b) 
         {
             int c = a;
@@ -503,6 +548,20 @@ namespace MRSTF
             }
 
             return arr;
+        }
+    }
+
+    class Tests 
+    {
+        public static void ShowKeysId()
+        {
+            // UNDONE
+            char key='2';
+
+            while (true)
+            {
+                
+            }
         }
     }
 
