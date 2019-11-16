@@ -10,19 +10,7 @@ namespace MRSTF
     {
         public static void Main(string[] args)
         {
-            int lines = 3, columns = 3;
 
-            int[,] matrix = new int[,]
-            {
-                {1,2,3},
-                {1,2,3},
-                {2,6,1}
-            };
-
-            for (int line = 0; line < lines; line++)
-            {
-                // UNDONE!!!
-            }
 
             Console.ReadKey();
         }
@@ -140,9 +128,155 @@ namespace MRSTF
         }
     }
 
+
+    class Sort
+    {
+        public static void SelectionSortReference(int[] arr) 
+        {
+            int N=arr.Length;
+            for (int i = 0; i < N - 1; i++)
+                for (int j = i + 1; j < N; j++)
+                    if (arr[i] > arr[j])
+                        Trash.SwapTwoNums(ref arr[i], ref arr[j]);
+        }
+
+        public static int[] SelectionSort(int[] arr)
+        {
+            int pos_min, temp;
+
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                pos_min = i;
+
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[pos_min]) pos_min = j;
+                }
+
+                temp = arr[i];
+                arr[i] = arr[pos_min];
+                arr[pos_min] = temp;
+            }
+
+            return arr;
+        }
+
+        public static int[] BubbleSort(int[] arr)
+        {
+            int tmp = 0;
+
+            for (int i = arr.Length - 1; i > 1; i--)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        tmp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = tmp;
+                    }
+                }
+            }
+
+            return arr;
+        }
+    }
+
+    class Tests 
+    {
+        public static void ShowKeysId()
+        {
+            // UNDONE
+            char key='2';
+
+            while (true)
+            {
+                
+            }
+        }
+    }
+
+    class Games
+    {
+        public static void GuessTheWordGAME()
+        {
+            bool found = false;
+            string secret_word = Useful.AskInput("Enter secret word: ", "password").ToLower();
+            string display_text = "";
+            string guessed = "";
+            char[] tmp = { };
+            for (int i = 0; i < secret_word.Length; i++) display_text += "*";
+
+            while (display_text.Contains("*"))
+            {
+                Console.Clear();
+                Console.Write(display_text);
+
+                Console.Write("\nGuessed letters: " + guessed);
+
+                Console.Write("\nChose a letter: ");
+                char letter = Console.ReadKey().KeyChar;
+                found = false;
+
+                for (int i = 0; i < secret_word.Length; i++)
+                {
+                    if (letter == secret_word[i])
+                    {
+                        tmp = display_text.ToCharArray();
+                        tmp[i] = letter;
+                        display_text = new string(tmp);
+
+                        tmp = secret_word.ToCharArray();
+                        tmp[i] = '¿';
+                        secret_word = new string(tmp);
+
+                        found = true;
+                    }
+                }
+
+                if (found) guessed += letter + ", ";
+            }
+
+            Console.Clear();
+            Console.Write("Congrtulations!\nYou solve it!\n\nPress (ESC) to exit.");
+        }
+
+        public static void BullsNCows()
+        {
+
+        }
+    }
+
     class Trash
     {
-        public static void DrawDiagonals() 
+        public static bool IsMagickSquare(int[,] square)
+        {
+            int length = square.GetLength(0);
+            int[] DiagonalSum = new int[2];
+            int[] ColSum = new int[length];
+            int[] RowSum = new int[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                for (int j = 0; j < length; j++)
+                {
+                    if (i == j) DiagonalSum[0] += square[i, j];
+                    if (i + j == length - 1) DiagonalSum[1] += square[i, j];
+                    RowSum[i] += square[i, j];
+                    ColSum[j] += square[i, j];
+                }
+            }
+
+            int ExampleNum = DiagonalSum[0];
+
+            foreach (int num in DiagonalSum) if (num != ExampleNum) return false;
+            foreach (int num in ColSum) if (num != ExampleNum) return false;
+            foreach (int num in RowSum) if (num != ExampleNum) return false;
+
+            return true;
+        }
+
+        public static void DrawDiagonals()
         {
             int[,] matrix = new int[7, 7];
 
@@ -161,7 +295,7 @@ namespace MRSTF
             }
         }
 
-        public static void SwapTwoNums(ref int a, ref int b) 
+        public static void SwapTwoNums(ref int a, ref int b)
         {
             int c = a;
             a = b;
@@ -495,124 +629,6 @@ namespace MRSTF
                         return s1;
             }
             return s3;
-        }
-    }
-
-    class Sort
-    {
-        public static void SelectionSortReference(int[] arr) 
-        {
-            int N=arr.Length;
-            for (int i = 0; i < N - 1; i++)
-                for (int j = i + 1; j < N; j++)
-                    if (arr[i] > arr[j])
-                        Trash.SwapTwoNums(ref arr[i], ref arr[j]);
-        }
-
-        public static int[] SelectionSort(int[] arr)
-        {
-            int pos_min, temp;
-
-            for (int i = 0; i < arr.Length - 1; i++)
-            {
-                pos_min = i;
-
-                for (int j = i + 1; j < arr.Length; j++)
-                {
-                    if (arr[j] < arr[pos_min]) pos_min = j;
-                }
-
-                temp = arr[i];
-                arr[i] = arr[pos_min];
-                arr[pos_min] = temp;
-            }
-
-            return arr;
-        }
-
-        public static int[] BubbleSort(int[] arr)
-        {
-            int tmp = 0;
-
-            for (int i = arr.Length - 1; i > 1; i--)
-            {
-                for (int j = 0; j < i; j++)
-                {
-                    if (arr[j] > arr[j + 1])
-                    {
-                        tmp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = tmp;
-                    }
-                }
-            }
-
-            return arr;
-        }
-    }
-
-    class Tests 
-    {
-        public static void ShowKeysId()
-        {
-            // UNDONE
-            char key='2';
-
-            while (true)
-            {
-                
-            }
-        }
-    }
-
-    class Games
-    {
-        public static void GuessTheWordGAME()
-        {
-            bool found = false;
-            string secret_word = Useful.AskInput("Enter secret word: ", "password").ToLower();
-            string display_text = "";
-            string guessed = "";
-            char[] tmp = { };
-            for (int i = 0; i < secret_word.Length; i++) display_text += "*";
-
-            while (display_text.Contains("*"))
-            {
-                Console.Clear();
-                Console.Write(display_text);
-
-                Console.Write("\nGuessed letters: " + guessed);
-
-                Console.Write("\nChose a letter: ");
-                char letter = Console.ReadKey().KeyChar;
-                found = false;
-
-                for (int i = 0; i < secret_word.Length; i++)
-                {
-                    if (letter == secret_word[i])
-                    {
-                        tmp = display_text.ToCharArray();
-                        tmp[i] = letter;
-                        display_text = new string(tmp);
-
-                        tmp = secret_word.ToCharArray();
-                        tmp[i] = '¿';
-                        secret_word = new string(tmp);
-
-                        found = true;
-                    }
-                }
-
-                if (found) guessed += letter + ", ";
-            }
-
-            Console.Clear();
-            Console.Write("Congrtulations!\nYou solve it!\n\nPress (ESC) to exit.");
-        }
-
-        public static void BullsNCows()
-        {
-
         }
     }
 }
