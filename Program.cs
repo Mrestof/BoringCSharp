@@ -10,7 +10,9 @@ namespace MRSTF
     {
         public static void Main(string[] args)
         {
-          // Your ultra-code here...
+            // Test program...
+            Trash.DrawDiagonals();
+            Console.ReadKey();
         }
     }
 
