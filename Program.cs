@@ -10,9 +10,7 @@ namespace MRSTF
     {
         public static void Main(string[] args)
         {
-
-
-            Console.ReadKey();
+          // Your ultra-code here...
         }
     }
 
@@ -131,7 +129,7 @@ namespace MRSTF
 
     class Sort
     {
-        public static void SelectionSortReference(int[] arr) 
+        public static void SelectionSortReference(int[] arr)
         {
             int N=arr.Length;
             for (int i = 0; i < N - 1; i++)
@@ -182,7 +180,7 @@ namespace MRSTF
         }
     }
 
-    class Tests 
+    class Tests
     {
         public static void ShowKeysId()
         {
@@ -191,7 +189,7 @@ namespace MRSTF
 
             while (true)
             {
-                
+
             }
         }
     }
