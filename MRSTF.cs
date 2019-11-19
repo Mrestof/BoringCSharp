@@ -60,7 +60,8 @@ namespace MRSTF
             return output;
         }
 
-        public static string AskInput(string prompt = "Enter text: ", string type = "text")
+        public static string AskInput(string prompt = "Enter text: ",
+                                      string type = "text")
         {
             if (type == "text")
             {
@@ -76,14 +77,13 @@ namespace MRSTF
 
                 while (true)
                 {
-                    char c = Console.ReadKey(true).KeyChar;
+                    ConsoleKeyInfo c = Console.ReadKey(true);
 
-                    if (c == 13)
-                        break;
+                    if (c.Key == ConsoleKey.Enter) break;
 
-                    if (c != 8)
+                    if (c.Key != ConsoleKey.Backspace)
                     {
-                        pass += c;
+                        pass += c.KeyChar;
                         Console.Write("*");
                     }
 
@@ -92,9 +92,11 @@ namespace MRSTF
                         if (pass.Length != 0)
                         {
                             pass = pass.Remove(pass.Length - 1);
-                            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                            Console.SetCursorPosition(Console.CursorLeft - 1,
+                                Console.CursorTop);
                             Console.Write(" ");
-                            Console.SetCursorPosition(Console.CursorLeft - 1, Console.CursorTop);
+                            Console.SetCursorPosition(Console.CursorLeft - 1,
+                                Console.CursorTop);
                         }
                     }
                 }
@@ -134,7 +136,7 @@ namespace MRSTF
         {
             ConsoleKeyInfo cki;
             Console.Write("==================================\n");
-            
+
             while (true)
             {
                 cki = Console.ReadKey(true);
@@ -206,10 +208,12 @@ namespace MRSTF
         public static void GuessTheWordGAME()
         {
             bool found = false;
-            string secret_word = Useful.AskInput("Enter secret word: ", "password").ToLower();
+            string secret_word = 
+                Useful.AskInput("Enter secret word: ", "password").ToLower();
             string display_text = "";
             string guessed = "";
-            char[] tmp = { };
+            char[] tmp = {};
+            
             for (int i = 0; i < secret_word.Length; i++) display_text += "*";
 
             while (display_text.Contains("*"))
@@ -243,7 +247,8 @@ namespace MRSTF
             }
 
             Console.Clear();
-            Console.Write("Congrtulations!\nYou solve it!\n\nPress (ESC) to exit.");
+            Console.Write(
+                "Congrtulations!\nYou solve it!\n\nPress (ESC) to exit.");
         }
 
         public static void BullsNCows()
@@ -274,30 +279,47 @@ namespace MRSTF
 
             int ExampleNum = DiagonalSum[0];
 
-            foreach (int num in DiagonalSum) if (num != ExampleNum) return false;
-            foreach (int num in ColSum) if (num != ExampleNum) return false;
-            foreach (int num in RowSum) if (num != ExampleNum) return false;
+            foreach (int num in DiagonalSum) 
+                if (num != ExampleNum) return false;
+
+            foreach (int num in ColSum) 
+                if (num != ExampleNum) return false;
+
+            foreach (int num in RowSum) 
+                if (num != ExampleNum) return false;
 
             return true;
         }
 
         public static void DrawDiagonals()
         {
+            ConsoleColor
+                bg = Console.BackgroundColor,
+                fg = Console.ForegroundColor;
+
             int[,] matrix = new int[7, 7];
 
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < 7; j++)
                 {
-                    if (i == j && i + j == 6) Console.BackgroundColor = ConsoleColor.Magenta;
-                    else if (i + j == 6) Console.BackgroundColor = ConsoleColor.DarkRed;
-                    else if (i != j) Console.BackgroundColor = ConsoleColor.White;
-                    else if (i == j) Console.BackgroundColor = ConsoleColor.DarkBlue;
+                    if (i == j && i + j == 6) 
+                        Console.BackgroundColor = ConsoleColor.Magenta;
+                    else if (i + j == 6) 
+                        Console.BackgroundColor = ConsoleColor.DarkRed;
+                    else if (i != j) 
+                        Console.BackgroundColor = ConsoleColor.White;
+                    else if (i == j) 
+                        Console.BackgroundColor = ConsoleColor.DarkBlue;
+
                     Console.Write("  ");
                 }
 
                 Console.Write('\n');
             }
+
+            Console.BackgroundColor = bg;
+            Console.ForegroundColor = fg;
         }
 
         public static void SwapTwoNums(ref int a, ref int b)
@@ -375,7 +397,9 @@ namespace MRSTF
             return arr;
         }
 
-        public static int[] RandomIntArrayGenerator(int len = 10, int maxNum = 50, int minNum = 0)
+        public static int[] RandomIntArrayGenerator(int len = 10, 
+                                                    int maxNum = 50, 
+                                                    int minNum = 0)
         {
             int[] arr = new int[len];
             Random rand = new Random();
@@ -456,7 +480,11 @@ namespace MRSTF
             }
         }
 
-        public static void RunningSharp(int len, int distance, int speed, int x = 0, bool turn = false)
+        public static void RunningSharp(int len, 
+                                        int distance, 
+                                        int speed, 
+                                        int x = 0, 
+                                        bool turn = false)
         {
             while (true)
             {
@@ -572,7 +600,8 @@ namespace MRSTF
             ulong granes_per_cell = 1;
             for (int i = 0; i < 64; i++)
             {
-                Console.WriteLine("{0} - я клеточка {1} зернышек", i + 1, granes_per_cell);
+                Console.WriteLine("{0} - я клеточка {1} зернышек",
+                    i + 1, granes_per_cell);
                 granes_per_cell *= 2;
                 granes += granes_per_cell;
             }
@@ -620,7 +649,10 @@ namespace MRSTF
             return false;
         }
 
-        public static string CountCats(long cats, string s1, string s2, string s3)
+        public static string CountCats(long cats,
+                                       string s1,
+                                       string s2,
+                                       string s3)
         {
             cats = Math.Abs(cats);
             int cLTD = (int)cats % 100;
