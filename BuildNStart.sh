@@ -1,5 +1,5 @@
 #! /usr/bin/env sh
 
-/usr/bin/env csc Program.cs
-/usr/bin/env mono Program.exe
-rm Program.exe
+/usr/bin/env csc MRSTF.cs
+/usr/bin/env mono MRSTF.exe
+rm MRSTF.exe

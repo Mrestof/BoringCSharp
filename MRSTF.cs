@@ -101,33 +101,52 @@ namespace MRSTF
 
                 return pass;
             }
-            else if (type == "array")
-            {
-                // UNDONE
-                char key;
-                string arr = "";
-                Console.Write(prompt);
-
-                while (true)
-                {
-                    key = Console.ReadKey().KeyChar;
-
-                    if (true)
-                    {
-                        break;
-                    }
-                }
-
-                return arr;
-            }
 
             else
             {
                 return "NO SUCH TYPE!";
             }
         }
+
+        public static int[] AskIntInput(string prompt = "Enter an array: ")
+        {
+            char key;
+            int[] arr = new int[1000];
+            Console.Write(prompt);
+
+            while (true)
+            {
+                key = Console.ReadKey().KeyChar;
+
+                if (true)
+                {
+                    break;
+                }
+            }
+
+            return arr;
+        }
     }
 
+    class Tests
+    {
+        public static void ShowKeysId()
+        {
+            ConsoleKeyInfo cki;
+            Console.Write("==================================\n");
+            
+            while (true)
+            {
+                cki = Console.ReadKey(true);
+                Console.WriteLine("Hash code: {0}", cki.GetHashCode());
+                Console.WriteLine("Modifiers: {0}", cki.Modifiers);
+                Console.WriteLine("Key char: {0}", cki.KeyChar);
+                Console.WriteLine("Key: {0}", cki.Key);
+
+                Console.Write("==================================\n");
+            }
+        }
+    }
 
     class Sort
     {
@@ -179,20 +198,6 @@ namespace MRSTF
             }
 
             return arr;
-        }
-    }
-
-    class Tests
-    {
-        public static void ShowKeysId()
-        {
-            // UNDONE
-            char key='2';
-
-            while (true)
-            {
-
-            }
         }
     }
 
