@@ -8,7 +8,7 @@ namespace MRSTF
         {
             bool found = false;
             string secret_word =
-                Useful.AskInput("Enter secret word: ", "password").ToLower();
+                Useful.AskStrInput("Enter secret word: ", "password").ToLower();
             string display_text = "";
             string guessed = "";
             char[] tmp = {};
@@ -52,7 +52,7 @@ namespace MRSTF
 
         public static void BullsNCows()
         {
-
+            // UNDONE!
         }
     }
 }
